@@ -1,0 +1,28 @@
+Source: libsimple-tacacct
+Section: admin
+Priority: optional
+Maintainer: Dave Olson <olson@cumulusnetworks.com>
+Build-Depends: debhelper (>= 9), autotools-dev, autoconf, libtac-dev, libtacplus-map-dev,
+    libaudit-dev, libpam-tacplus-dev, dpkg-dev (>= 1.16.1~)
+Standards-Version: 3.9.6
+Homepage: http://www.cumulusnetworks.com
+
+Package: libsimple-tacacct1
+Architecture: any
+Pre-Depends: ${misc:Pre-Depends}, multiarch-support
+Depends: ${shlibs:Depends}, ${misc:Depends}, libtac2, libtacplus-map1
+Description: simple library for TACACS+ accounting
+	This library supplies send_tacacs_acct(), a very simple interface that
+	allows any program to do TACACS+ accounting with no knowledge of
+	the TACACS+ protocol.
+	.
+	It is designed to be NOP if the process calling it is not a descendent
+	of a TACACS-authenticated login.
+
+Package: libsimple-tacacct-dev
+Section: libdevel
+Architecture: any
+Depends: ${misc:Depends}, libtacplus-map-dev, libsimple-tacacct1 (= ${binary:Version}), libc-dev
+Description: Development files for simple TACACS+ accounting library
+ Header files and .so shared library link for APIs to support simple TACACS+
+ accounting

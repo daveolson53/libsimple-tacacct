@@ -1,0 +1,54 @@
+.\"                                      Hey, EMACS: -*- nroff -*-
+.\" (C) Copyright 2015, 2016 Cumulus Networks, Inc
+.TH send_tacacs_acct 3 "June 22, 2016"
+.\" Please adjust this date whenever revising the manpage.
+.SH NAME
+send_tacacs_acct \- send TACACS+ accounting records
+.SH SYNOPSIS
+.B #include <tacplus/simple_tacacct.h>
+.sp
+.BI "int send_tacacs_acct(int " taskid ", const char *" cmdmsg );
+.SH DESCRIPTION
+.BR send_tacacs_acct ()
+sends the command buffer
+.I
+to a TACACS+ server as an accounting record, and returns the
+.I taskid
+sent to the server.  The
+.I taskid
+argument is passed as
+.B 0
+to indicate the start of a command, and the value returned from the start
+call is passed when the command completes, so the tacacs server accounting
+will always match start and end of commands, regardless of interleaving.
+.P
+The TACACS+ protocol limits the accounting record to approximately 240
+characters, so the cmdmsg buffer may be truncated in the server log.
+.P
+Accounting records are only sent if the process is a descendent of
+a login process authenticated by a TACACS+ server via the libpam-tacplus
+package with the
+.BR libtacmap_plus (8)
+enhancements.
+.P
+This is a very simple interface, and the calling program requires very
+little modification to use it.  For full control of the accounting, see
+the
+.B libtac
+source that is part of the
+.B libpam-tacplus
+package.
+.SH FILES
+.IR  /etc/tacplus_servers --
+Lists IP address and shared secret for one or more TACACS+ servers in the form:
+.IP secret=string
+This is the shared secret used for communication with a TACACS+ server
+.PP
+.IP server=ipaddr
+This is the IP address of a TACACS+ server.
+.PP
+.P
+the two keywords can be in either order, but when multiple servers are used,
+they must be listed in pairs.
+.SH SEE ALSO
+.BR libtacmap_plus (8)

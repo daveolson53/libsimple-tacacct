@@ -1,0 +1,7 @@
+libsimple-tacacct (1.0.0-1) unstable; urgency=low
+
+  * Initial release of simple tacacs accounting library so other shared
+    libraries can connect to a TACACS+ server without being tacacs aware.
+
+ -- Dave Olson <olson@cumulusnetworks.com>  Mon, 19 Sep 2016 16:13:47 -0700
+
