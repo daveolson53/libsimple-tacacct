@@ -1,4 +1,4 @@
-#  Copyright 2015, 2016, Cumulus Networks, Inc.
+#  Copyright 2015, 2016 Cumulus Networks, Inc.  All rights reserved.
 #  Author: Dave Olson <olson@cumulusnetworks.com>
 
 EXTRA_DIST = ChangeLog README
