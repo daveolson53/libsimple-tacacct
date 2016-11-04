@@ -311,9 +311,10 @@ send_tacacs_acct(int taskid, const char *cmdmsg)
     for(srv_i = 0; srv_i < tac_srv_no; srv_i++) {
         srv_fd = tac_connect_single(tac_srv[srv_i].addr, tac_srv[srv_i].key,
             NULL);
-        if(srv_fd == -1) {
-            syslog(LOG_WARNING, "error connecting to %s send acct record: %m",
-                tac_ntop(tac_srv[srv_i].addr->ai_addr));
+        if(srv_fd < 0) {
+            syslog(LOG_WARNING, "error (%d) connecting to %s to send accounting"
+                " record: %m",
+                srv_fd, tac_ntop(tac_srv[srv_i].addr->ai_addr));
             continue;
         }
         retval = send_acct_msg(srv_fd, type, user, tty, hname, cmdmsg, task_id);
