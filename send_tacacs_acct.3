@@ -46,9 +46,21 @@ This is the shared secret used for communication with a TACACS+ server
 .PP
 .IP server=ipaddr
 This is the IP address of a TACACS+ server.
-.PP
 .P
-the two keywords can be in either order, but when multiple servers are used,
-they must be listed in pairs.
+The two keywords above can be in any order, but when multiple servers are used,
+they should be listed in pairs (if there are more servers than secrets, and
+at least one secret follows the servers, the most recently listed secret is
+used).
+.br
+.IP debug=NUMBER 16
+Enables debugging if non-zero
+.br
+.IP timeout=NUMBER 16
+Enables use of poll() when reading from servers if >= 0.  If not set, or set
+to a negative value, disables use of
+.BR poll (2).
+The value is the number of seconds passed as the 3rd argument to
+.BR poll (2).
 .SH SEE ALSO
+.BR poll (2),
 .BR libtacmap_plus (8)
