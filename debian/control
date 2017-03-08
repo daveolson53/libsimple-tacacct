@@ -11,7 +11,7 @@ Homepage: http://www.cumulusnetworks.com
 Package: libsimple-tacacct1
 Architecture: any
 Pre-Depends: ${misc:Pre-Depends}, multiarch-support
-Depends: ${shlibs:Depends}, ${misc:Depends}, libtac2, libtacplus-map1
+Depends: ${shlibs:Depends}, ${misc:Depends}, libtac2 (>= 1.4.1~), libtacplus-map1
 Description: simple library for TACACS+ accounting
 	This library supplies send_tacacs_acct(), a very simple interface that
 	allows any program to do TACACS+ accounting with no knowledge of
