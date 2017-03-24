@@ -259,7 +259,7 @@ static void init_fields(void)
      */
     if(auid == 0 || auid == (uid_t)-1 || !session || session == -1 ||
         !(logname = lookup_mapuid(auid, auid, session, mappedname,
-                sizeof mappedname))) {
+                sizeof mappedname, NULL))) {
         return; /* without reading config for server */
     }
 

@@ -1,5 +1,11 @@
-libsimple-tacacct (1.0.1-1) UNRELEASED; urgency=low
+libsimple-tacacct (1.0.2-1) unstable; urgency=low
 
+  * API change to support new user_homedir config variable.
+  * Updated to new libtac2 API with VRF support
+
+ -- Dave Olson <olson@cumulusnetworks.com>  Thu, 23 Mar 2016 22-31:01 -0700
+
+libsimple-tacacct (1.0.1-1) UNRELEASED; urgency=low
   * added config variable "timeout" to limit time attempting to
     connect to non-responding TACACS server.
   * Fixed issues with ordering of multiple servers and secrets in config files.
