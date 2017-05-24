@@ -259,7 +259,7 @@ static void init_fields(void)
      */
     if(auid == 0 || auid == (uid_t)-1 || !session || session == -1 ||
         !(logname = lookup_mapuid(auid, auid, session, mappedname,
-                sizeof mappedname))) {
+                sizeof mappedname, NULL))) {
         return; /* without reading config for server */
     }
 
@@ -325,7 +325,7 @@ send_tacacs_acct(int taskid, const char *cmdmsg)
 
     for(srv_i = 0; srv_i < tac_srv_no; srv_i++) {
         srv_fd = tac_connect_single(tac_srv[srv_i].addr, tac_srv[srv_i].key,
-            NULL);
+            NULL, NULL);
         if(srv_fd < 0) {
             syslog(LOG_WARNING, "error (%d) connecting to %s to send accounting"
                 " record: %m",
