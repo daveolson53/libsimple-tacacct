@@ -22,11 +22,11 @@
 /*
  * This is mostly boilerplate, for programs that want to send
  * very simple (char * buffer) tacacs accounting stop and start
- * records.   
+ * records.
  *
  * It is intended that the calling program use dlopen and dlsym to
  * invoke the only external entry point send_tacacs_acct().
- * 
+ *
  * On first call, send_tacacs_acct() does all the initialization of
  * reading the config file, constructing the basic arguments needed
  * for sending an account record, etc.
@@ -83,7 +83,7 @@ static int tacplus_config(const char *cfile)
     conf = fopen(cfile, "r");
     if(conf == NULL) {
         syslog(LOG_WARNING, "%s: can't open config file %s: %m",
-            lib_name, cfile); 
+            lib_name, cfile);
         goto err;
     }
 
@@ -99,7 +99,7 @@ static int tacplus_config(const char *cfile)
             if(lbuf[8]) /* else treat as empty config, ignoring errors */
                 (void)tacplus_config(&lbuf[8]);
         }
-        else if(!strncmp(lbuf, "debug=", 6)) 
+        else if(!strncmp(lbuf, "debug=", 6))
             debug = strtoul(lbuf+6, NULL, 0);
         else if (!strncmp (lbuf, "timeout=", 8)) {
             tac_timeout = (int)strtoul(lbuf+8, NULL, 0);
@@ -278,7 +278,7 @@ static void init_fields(void)
         snprintf(hname, sizeof hname, "unk_host");
 }
 
-/* 
+/*
  * This is the only global symbol in the library.
  *
  * Send the accounting record to a TACACS+ server.
